@@ -1,9 +1,9 @@
 module.exports = {
-  publicPath: '/',
+  publicPath: './',
   pages: {
     app: {
-      entry: 'src/main.js',
-      template: 'src/index.html',
+      entry: './src/main.js',
+      template: './src/index.html',
       filename: 'index.html'
     }
   },
