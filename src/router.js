@@ -25,6 +25,11 @@ export default new Router({
       path: '/timeline',
       name: 'timeline',
       component: () => import(/* webpackChunkName: "timeLine" */ './components/timeLine.vue')
+    },
+    {
+      path: '/uploader',
+      name: 'uploader',
+      component: () => import(/* webpackChunkName: "uploader" */ './views/uploader/index.vue')
     }
   ]
 })
