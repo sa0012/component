@@ -85,8 +85,6 @@ export default {
           })
         }
 
-        console.log(1111111)
-
         this.timer = setTimeout(() => {
           runRotateFn({
             productNo: 'OP2000000460',

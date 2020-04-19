@@ -11,6 +11,14 @@ module.exports = {
   assetsDir: 'static',
   runtimeCompiler: true,
   productionSourceMap: false,
+  // 引入全局scss变量
+  //  css: {
+  //   loaderOptions: {
+  //     sass: {
+  //       data: `@import "@/assets/style/variables.scss";`
+  //     }
+  //   }
+  // },
   chainWebpack: config => {
     // version
     config

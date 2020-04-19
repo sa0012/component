@@ -27,11 +27,6 @@ export default new Router({
       component: () => import(/* webpackChunkName: "timeLine" */ './components/timeLine.vue')
     },
     {
-      path: '/uploader',
-      name: 'uploader',
-      component: () => import(/* webpackChunkName: "uploader" */ './views/uploader/index.vue')
-    },
-    {
       path: '/lottery',
       name: 'lottery',
       meta: {
@@ -40,6 +35,17 @@ export default new Router({
       component: () => import(
         /* webpackChunkName: "lottery" */
         '@/components/lottery/index.vue'
+      )
+    },
+    {
+      path: '/uploader',
+      name: 'uploader',
+      meta: {
+        title: '图片上传组件'
+      },
+      component: () => import(
+        /* webpackChunkName: "uploader" */
+        '@/views/uploader/index.vue'
       )
     }
   ]

@@ -143,6 +143,7 @@ export default {
       let filterList = list.filter(item => item.imgUrl || item.imageUrl) || []
       if (filterList.length <= 0) return []
       let newList = []
+      // eslint-disable-next-line no-unused-vars
       filterList.forEach((item, index) => {
         newList.push({
           src: item.imgUrl || item.imageUrl,
