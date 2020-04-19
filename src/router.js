@@ -30,6 +30,17 @@ export default new Router({
       path: '/uploader',
       name: 'uploader',
       component: () => import(/* webpackChunkName: "uploader" */ './views/uploader/index.vue')
+    },
+    {
+      path: '/lottery',
+      name: 'lottery',
+      meta: {
+        title: '抽奖组件'
+      },
+      component: () => import(
+        /* webpackChunkName: "lottery" */
+        '@/components/lottery/index.vue'
+      )
     }
   ]
 })

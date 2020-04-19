@@ -1,0 +1,83 @@
+{
+  "result": {
+    "activityCode": "AC2000000185",
+    "activityName": "活动031106",
+    "dealerCode": "BK20211",
+    "dealerName": "台湾通用勿动",
+    "status": "ONGOING",
+    "startDate": "2020-03-11",
+    "endDate": "2020-03-11",
+    "bannerUrl": "null/1583925784028_58f86a6e1b10d7ec8da0233ddfefde9e.jpg",
+    "fullBannerUrl": "http://insaic-ecs-sit.oss-cn-shanghai.aliyuncs.com/null/1583925784028_58f86a6e1b10d7ec8da0233ddfefde9e.jpg?Expires=1583939776&OSSAccessKeyId=STS.NUbfSRUYpUUL6uMHPejyE8kjs&Signature=3j6gbG728QNTyHzpt9spq1kDaZM%3D&security-token=CAIShgJ1q6Ft5B2yfSjIr5bXLenmuIZR4penNFP8rFAwZvZp167BkTz2IHpFenZqB%2BEYsPs%2BnmBY7Pcdlrt0UIQATFffcM59q49a6higZIyZYEV2VFhC2vOfAmG2J0PR%2Fq27OpfULr70fvOqdCq39Etayqf7cjOPRkGsNYbz57dsctUQWHvTD1MEfqA0QDFvs8gHL3DcGO%2BwOxrx%2BArqAVFvpxB3hBEUi8394LXFtUuD1wehlLRJ996vf8D0VaQ2YscjCeXS9fdta6%2FM3BRX7xV376pshMRGg2yd74%2FCWQcAvUvZYrCEooc%2BcxUEYbMhXq9Ct%2FH9nrh1sfeWjIXrjgxKLQXHsZBStnDLGoABCkZ35rFCIO0Rw%2BrFZDt2ZHw8QJ6x33WKQ1tfSqyicTKH0rSM9R%2F%2BIdJ8Wh%2F4n%2BnVwa0wAB7h9DwbnPpavYDSyhVRHgTG3ONx%2F49kIofPxP5gZYR6sema4IWReo%2BG1OL5K5f0F%2FiZXPZ8m9E7d3%2F8LzoTiLxoECcM9LbAHJdVw60%3D",
+    "rgb": "#0000ff",
+    "activityPhone": "4008-000-000",
+    "activityAddress": "上海市啦啦啦噜啦",
+    "activityRule": null,
+    "activityDesc": "地方噶发的噶尔个案如果",
+    "autoCancelSecond": 10,
+    "needAutoCancel": "Y",
+    "activitySessionList": [
+      {
+        "startTime": "19:00:00",
+        "endTime": "20:00:00",
+        "sessionCode": "ACS2000000285",
+        "sessionName": "啊啊",
+        "status": "S_103",
+        "sessionProductList": [
+          {
+            "id": 1009,
+            "productNo": "OP2000000447",
+            "dealerCode": "BK20211",
+            "dealerName": "台湾通用勿动",
+            "productName": "产品名称031127",
+            "productLogoUrl": "activity/productStore/1583925529140_58f86a6e1b10d7ec8da0233ddfefde9e.jpg",
+            "fullProductLogoUrl": "http://insaic-ecs-sit.oss-cn-shanghai.aliyuncs.com/activity/productStore/1583925529140_58f86a6e1b10d7ec8da0233ddfefde9e.jpg?Expires=1583939776&OSSAccessKeyId=STS.NTnuvWEZ8WDANxShRUGMEkejq&Signature=0dM8%2FrMKNwWqlQPPMt0tHovbnCg%3D&security-token=CAIShgJ1q6Ft5B2yfSjIr5fbPszjqIUZ4IaqTF7ijFIAS8JphKDBkzz2IHpFenZqB%2BEYsPs%2BnmBY7Pcdlrt0UIQATFffcM59q49a6higZIyZCXt2VFhC2vOfAmG2J0PR%2Fq27OpfULr70fvOqdCq39Etayqf7cjOPRkGsNYbz57dsctUQWHvTD1MEfqA0QDFvs8gHL3DcGO%2BwOxrx%2BArqAVFvpxB3hBEUi8394LXFtUuD1wehlLRJ996vf8D0VaQ2YscjCeXS9fdta6%2FM3BRX7xV376pshMRGg2yd74%2FCWQcAvUvZYrCEooc%2BcxUEYbMhXq9Ct%2FH9nrh1sfeWjIXrjgxKLQXHsZBStnDLGoABrjY7dRfV3vmaf%2Br%2BRf975nFhcq%2B8LwZCj5K5gsRxgYOKASeZ%2Fvdt9CXotF6dEe0D10GGzHZR1faKxYUAXY%2FQYW5PD55IN1CtyCXWpOYziNNil2gtCZ9GeD9CyZRWS8K2KBcr2G8glrEvbFpakCpc6RPw5%2FWNGD5g9TXZLYCMVGo%3D",
+            "marketPrice": 888,
+            "seckillPrice": 99,
+            "remainingInventory": -1,
+            "needPurchaseLimit": "N",
+            "purchaseLimitCount": null,
+            "deliveryMethod": "PICK_UP_STORE",
+            "createUser": "sit-test",
+            "createTime": 1583925534000,
+            "status": "S_103"
+          }
+        ],
+        "lotteryProductMOs": null
+      },
+      {
+        "startTime": "20:30:00",
+        "endTime": "22:00:00",
+        "sessionCode": "ACS2000000284",
+        "sessionName": "版本",
+        "status": "S_103",
+        "sessionProductList": [
+          {
+            "id": 1010,
+            "productNo": "OP2000000448",
+            "dealerCode": "BK20211",
+            "dealerName": "台湾通用勿动",
+            "productName": "产品名称031128",
+            "productLogoUrl": "activity/productStore/1583925553656_7ac665ae42517299ff85e28d0e363af7.jpg",
+            "fullProductLogoUrl": "http://insaic-ecs-sit.oss-cn-shanghai.aliyuncs.com/activity/productStore/1583925553656_7ac665ae42517299ff85e28d0e363af7.jpg?Expires=1583939776&OSSAccessKeyId=STS.NTpuUv2eCeyesYCRRUSjEZ127&Signature=%2Fl2f%2Fv3nehJkMzzYKZhTHXFnyyM%3D&security-token=CAIShgJ1q6Ft5B2yfSjIr5fFPu%2FC37pi0ruOcX%2FytlIAX%2BVptfSZ1Tz2IHpFenZqB%2BEYsPs%2BnmBY7Pcdlrt0UIQATFffcM59q49a6higZIyZAER2VFhC2vOfAmG2J0PR%2Fq27OpfULr70fvOqdCq39Etayqf7cjOPRkGsNYbz57dsctUQWHvTD1MEfqA0QDFvs8gHL3DcGO%2BwOxrx%2BArqAVFvpxB3hBEUi8394LXFtUuD1wehlLRJ996vf8D0VaQ2YscjCeXS9fdta6%2FM3BRX7xV376pshMRGg2yd74%2FCWQcAvUvZYrCEooc%2BcxUEYbMhXq9Ct%2FH9nrh1sfeWjIXrjgxKLQXHsZBStnDLGoABCqIPSg1JccwtTwsLJEqIAb0u1G%2FRthIwHBGVDTu%2F%2F51Z2SE9PVrieHhQzV1E7rftPBsp0wR0pyc06IKIzNswV6nYdZfBJdKdQJUPx3S3zincw%2B6hzIqDa7kIK65sNTFbhf9AMxBi7tBhbo%2F%2F%2FVABCmnRduq3UGBoZKN3yIWLV9o%3D",
+            "marketPrice": 999,
+            "seckillPrice": 0.01,
+            "remainingInventory": -1,
+            "needPurchaseLimit": "Y",
+            "purchaseLimitCount": 1,
+            "deliveryMethod": "POST",
+            "createUser": "sit-test",
+            "createTime": 1583925557000,
+            "status": "S_103"
+          }
+        ],
+        "lotteryProductMOs": null
+      }
+    ],
+    "activityUrl": null,
+    "currentTimeMillis": 1583936176737
+  },
+  "errorMessges": null,
+  "warningMessage": null,
+  "status": "100"
+}

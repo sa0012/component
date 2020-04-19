@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <!-- <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> -->
-    </div>
     <router-view/>
   </div>
 </template>
@@ -13,7 +9,25 @@ export default {
   data () {
     return {}
   },
+
+  methods: {
+    initPx2Rem (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth
+          if (!clientWidth) return
+          docEl.style.fontSize = 14 * (clientWidth / 375) + 'px'
+        }
+  
+      if (!doc.addEventListener) return
+      win.addEventListener(resizeEvt, recalc, false)
+      doc.addEventListener('DOMContentLoaded', recalc, false)
+    }
+  },
+
   mounted () {
+    this.initPx2Rem(document, window)
     document.documentElement.style.setProperty('--theme-color', '#f90')
   }
 }
@@ -29,15 +43,5 @@ $theme-color: var(--theme-color);
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $theme-color;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>

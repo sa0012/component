@@ -1,0 +1,83 @@
+{
+  "result": {
+    "activityCode": "AC2000000233",
+    "activityName": "六七秒杀活动3六七秒杀活动3六七秒杀活动3",
+    "dealerCode": "VW860003",
+    "dealerName": "广东测试二",
+    "status": "ONGOING",
+    "startDate": "2020-03-12",
+    "endDate": "2020-03-14",
+    "bannerUrl": null,
+    "fullBannerUrl": null,
+    "rgb": "#ffffff",
+    "activityPhone": null,
+    "activityAddress": null,
+    "activityRule": null,
+    "activityDesc": null,
+    "autoCancelSecond": null,
+    "needAutoCancel": "N",
+    "activitySessionList": [
+      {
+        "startTime": "17:00:00",
+        "endTime": "18:38:00",
+        "sessionCode": "ACS2000000348",
+        "sessionName": "！",
+        "status": "S_102",
+        "sessionProductList": [
+          {
+            "id": 1210,
+            "productNo": "OP2000000648",
+            "dealerCode": "VW860003",
+            "dealerName": "广东测试二",
+            "productName": "123阿斯达！@#@！#！@#",
+            "productLogoUrl": "activity/productStore/1584003597399_Tulips.jpg",
+            "fullProductLogoUrl": "https://insaic-ecs-sit.oss-cn-shanghai.aliyuncs.com/activity/productStore/1584003597399_Tulips.jpg?Expires=1584011246&OSSAccessKeyId=STS.NT3rFkxfXzJuBFqm5z2kMNfDi&Signature=PdBIKhGy624AqcHoiu0%2BXGXcsiU%3D&security-token=CAIShgJ1q6Ft5B2yfSjIr5eGOfzflbl5zYieQGDAiTUvPuRhoaPvizz2IHpFenZqB%2BEYsPs%2BnmBY7Pcdlrt0UIQATFffcM59q49a6higZIyZF11odlhC2vOfAmG2J0PR%2Fq27OpfULr70fvOqdCq39Etayqf7cjOPRkGsNYbz57dsctUQWHvTD1MEfqA0QDFvs8gHL3DcGO%2BwOxrx%2BArqAVFvpxB3hBEUi8394LXFtUuD1wehlLRJ996vf8D0VaQ2YscjCeXS9fdta6%2FM3BRX7xV376pshMRGg2yd74%2FCWQcAvUvZYrCEooc%2BcxUEYbMhXq9Ct%2FH9nrh1sfeWjIXrjgxKLQXHsZBStnDLGoABITN4FN66aiszP%2BPD%2F%2BeeHEXf1sfOpIDcR%2F%2Fc%2FZWn4PkxaORV6rA%2FZCEuRf4tB81RmfI3%2FUrKVu5%2BKerxzgWzT%2FdR4G%2FEfIMBCvO6yz6SkkZhxVwHH2alt5Re5kS3E4e3t0F7QsGggISZAZPwDpvBXAG4zQG33QG4C7O6OevyntY%3D",
+            "marketPrice": 99999999,
+            "seckillPrice": 0.01,
+            "remainingInventory": 99999999,
+            "needPurchaseLimit": "N",
+            "purchaseLimitCount": null,
+            "deliveryMethod": "PICK_UP_STORE",
+            "createUser": "sit-test",
+            "createTime": 1584003624000,
+            "status": "S_102"
+          }
+        ],
+        "lotteryProductMOs": null
+      },
+      {
+        "startTime": "18:38:00",
+        "endTime": "18:55:00",
+        "sessionCode": "ACS2000000348",
+        "sessionName": "！",
+        "status": "S_101",
+        "sessionProductList": [
+          {
+            "id": 1210,
+            "productNo": "OP2000000648",
+            "dealerCode": "VW860003",
+            "dealerName": "广东测试二",
+            "productName": "123阿斯达！@#@！#！@#",
+            "productLogoUrl": "activity/productStore/1584003597399_Tulips.jpg",
+            "fullProductLogoUrl": "https://insaic-ecs-sit.oss-cn-shanghai.aliyuncs.com/activity/productStore/1584003597399_Tulips.jpg?Expires=1584011246&OSSAccessKeyId=STS.NT3rFkxfXzJuBFqm5z2kMNfDi&Signature=PdBIKhGy624AqcHoiu0%2BXGXcsiU%3D&security-token=CAIShgJ1q6Ft5B2yfSjIr5eGOfzflbl5zYieQGDAiTUvPuRhoaPvizz2IHpFenZqB%2BEYsPs%2BnmBY7Pcdlrt0UIQATFffcM59q49a6higZIyZF11odlhC2vOfAmG2J0PR%2Fq27OpfULr70fvOqdCq39Etayqf7cjOPRkGsNYbz57dsctUQWHvTD1MEfqA0QDFvs8gHL3DcGO%2BwOxrx%2BArqAVFvpxB3hBEUi8394LXFtUuD1wehlLRJ996vf8D0VaQ2YscjCeXS9fdta6%2FM3BRX7xV376pshMRGg2yd74%2FCWQcAvUvZYrCEooc%2BcxUEYbMhXq9Ct%2FH9nrh1sfeWjIXrjgxKLQXHsZBStnDLGoABITN4FN66aiszP%2BPD%2F%2BeeHEXf1sfOpIDcR%2F%2Fc%2FZWn4PkxaORV6rA%2FZCEuRf4tB81RmfI3%2FUrKVu5%2BKerxzgWzT%2FdR4G%2FEfIMBCvO6yz6SkkZhxVwHH2alt5Re5kS3E4e3t0F7QsGggISZAZPwDpvBXAG4zQG33QG4C7O6OevyntY%3D",
+            "marketPrice": 99999999,
+            "seckillPrice": 0.01,
+            "remainingInventory": 99999999,
+            "needPurchaseLimit": "N",
+            "purchaseLimitCount": null,
+            "deliveryMethod": "PICK_UP_STORE",
+            "createUser": "sit-test",
+            "createTime": 1584003624000,
+            "status": "S_101"
+          }
+        ],
+        "lotteryProductMOs": null
+      }
+    ],
+    "activityUrl": null,
+    "currentTimeMillis": 1584007646870
+  },
+  "errorMessges": null,
+  "warningMessage": null,
+  "status": "100"
+}

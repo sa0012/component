@@ -1,0 +1,15 @@
+{
+  "result": {
+    "securityToken": "CAIShgJ1q6Ft5B2yfSjIr5feM4L3rph086mEVk2AtTEUY9ofu4v4sjz2IH1OenluBu8dt/Q0lGBZ6P0dlrt0UIQATFffcM59q49a6higZIyZGAJDCExC2vOfAmG2J0PR/q27OpfULr70fvOqdCq39Etayqf7cjOPRkGsNYbz57dsctUQWHvTD1MEfqA0QDFvs8gHL3DcGO+wOxrx+ArqAVFvpxB3hBEUi8394LXFtUuD1wehlLRJ996vf8D0VaQ2YscjCeXS9fdta6/M3BRX7xV376pshMRGg2ya5I/NXQYOuEzWaLqEo4M0cxUEYbMhXq9Ct/H9nrh1sfeWjIXrjgxSLQXHsZBStnDLGoABZOxXy/XMnC5vq1V2pp1s531GkUgemIHaiDWv/uYF62XnVhhRE833Ewvqm5ReXQ1bCj0HbhYfoi5uEGsF8nIQDbaVFZYyz6OWfN5z1LIe5UvW0ksAgWwXzbpa9Kokbfv2VBDCFngBjsD7Xvdxmz5P0feX+69qd0APpwVgolJYnWA=",
+    "accessKeySecret": "44qCX7n5XUHUoQbo5JVxsWWCeGoKqfNKGpw7oCAG6W9u",
+    "accessKeyId": "STS.NTkx8CCGUDkoTk1Q1AoU3TNSP",
+    "expiration": "2020-04-16T14:22:55Z",
+    "endpoint": "https://oss-cn-shanghai.aliyuncs.com",
+    "region": null,
+    "bucket": "insaic-ecs-sit",
+    "ossFilePath": "ecs/export/writeoff/null/20200416/"
+  },
+  "errorMessges": null,
+  "warningMessage": null,
+  "status": "100"
+}

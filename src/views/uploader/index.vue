@@ -3,14 +3,19 @@
     <div class="sq-uploader-input-wrap">
       <input
         class="sq-uploader-input"
+        :disabled="disabled"
+        @click="handleUploader"
         type="file"
         accept="image/*"
         name="file"
+        multiple="3"
         @change="handleChange($event)"
       >
     </div>
     <img :src="imgUrl" alt="">
     <img :src="blob" alt="">
+
+    <button @click="handleClick">手动触发上传</button>
   </div>
 </template>
 
@@ -72,8 +77,19 @@ export default {
         var _blob = dataURLtoBlob(base64Url)
         this.blob = _blob
         console.log(_blob, 'blob')
+        this.disabled = true
       })
     },
+
+    handleUploader () {
+      // this.disabled = true
+      console.log(1111111)
+    },
+
+    handleClick (e) {
+      this.disabled = false
+      document.querySelector('.sq-uploader-input').click()
+    }
   }
 }
 </script>
