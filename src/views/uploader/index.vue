@@ -13,17 +13,6 @@
         :multipartUpload="multipartUpload"
         />
     </div>
-
-    <sq-popup v-model="showSheet" position="bottom">
-      <sq-picker
-        ref="coveragePickerRef"
-        showToolbar
-        value-key="value"
-        :columns="bankList"
-        @confirm="confirmHandler"
-        @cancel="showSheet = !showSheet"
-      />
-    </sq-popup>
   </div>
 </template>
 

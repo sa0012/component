@@ -11,7 +11,7 @@
       >
         <i
           v-show="!requiredImageEnum.includes(upload.imageType)"
-          @click="deleteImg(upload, index)"
+          @click.stop="deleteImg(upload, index)"
           class="iconfont icon-minus-circle upload-delete"></i>
         <div class="upload-icon">
           <div class="upload-icon-wrap" v-show="!(upload.imageTypeMsg && upload.imgUrl)">
@@ -157,34 +157,36 @@ export default {
       let target = this.uploadList[this.currentIndex]
       target.imgUrl = url
       target.showLoading = true
+      setTimeout(() => {
+        target.showLoading = false
+      }, 1500);
     },
 
     getFiles ({ filePath, file, upload }) {
       console.log(filePath, upload)
-      let _blob = dataURLtoBlob(file)
-      let _this = this
-      this.multipartUpload(filePath, _blob, this.currentIndex, upload)
-        .then(res => {
-          let { ossFilePath, index } = res
-          this.uploadList[index].showLoading = false
-          this.uploadList[index].imageUrl = ossFilePath
-          _this.uploadToServer({
-            sort: upload.sort,
-            productCategory: this.productCategory,
-            writeCode: this.writeCode,
-            settlementId: this.settlementId,
-            imageUrl: ossFilePath,
-            imageGroup: upload.imageGroup,
-            imageType: upload.imageType
-          })
-        })
-        .catch(e => {
-          this.$toast.text(e.errorMsg || '上传失败')
-          let index = e.index || this.currentIndex
-          this.uploadList[index].showLoading = false
-          this.uploadList[index].imgUrl = ''
-          console.log(e, 'e')
-        })
+      // let _blob = dataURLtoBlob(file)
+      // let _this = this
+      // this.multipartUpload(filePath, _blob, this.currentIndex, upload)
+      //   .then(res => {
+      //     let { ossFilePath, index } = res
+      //     this.uploadList[index].showLoading = false
+      //     this.uploadList[index].imageUrl = ossFilePath
+      //     _this.uploadToServer({
+      //       sort: upload.sort,
+      //       productCategory: this.productCategory,
+      //       writeCode: this.writeCode,
+      //       settlementId: this.settlementId,
+      //       imageUrl: ossFilePath,
+      //       imageGroup: upload.imageGroup,
+      //       imageType: upload.imageType
+      //     })
+      //   })
+      //   .catch(e => {
+      //     let index = e.index || this.currentIndex
+      //     this.uploadList[index].showLoading = false
+      //     this.uploadList[index].imgUrl = ''
+      //     console.log(e, 'e')
+      //   })
     }
   },
 
@@ -232,7 +234,7 @@ export default {
     right: px2Rem(-5px);
     font-size: px2Rem(20px);
     color: #E03C3C;
-    z-index: 333;
+    z-index: 335;
   }
 
   &-icon {

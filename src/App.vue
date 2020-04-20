@@ -34,9 +34,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/assets/style/reset.scss';
-@import '@/assets/font/iconfont.scss';
-$theme-color: var(--theme-color);
+@import '~@/assets/style/reset.scss';
+@import '~@/assets/font/iconfont.scss';
+// $theme-color: var(--theme-color);
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

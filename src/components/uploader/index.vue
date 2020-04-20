@@ -39,6 +39,8 @@
 
 <script>
 import Previewer from '@/components/preview'
+import SqPopup from '@/components/popup'
+import SqPicker from '@/components/picker'
 const operationMethod = [
   {
     name: 'change',
@@ -147,6 +149,7 @@ export default {
       reader.readAsDataURL(blob)
     },
 
+    /* eslint-disable */
     handleChange (e, isMultiple = false) {
       this.disabled = true
       let { files } = e.target
@@ -194,6 +197,7 @@ export default {
      * @param {*} quality // 图片质量缩放比
      */
     compressImage (path, mimeType, quality = 1) {
+      /* eslint-disable */
       return new Promise((resolve, reject) => {
         let img = new Image()
         img.src = path
@@ -259,7 +263,9 @@ export default {
   },
 
   components: {
-    Previewer
+    Previewer,
+    SqPopup,
+    SqPicker
   }
 }
 </script>

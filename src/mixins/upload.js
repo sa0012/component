@@ -37,7 +37,7 @@ export default {
       const config = {
         writeOrReadFlag: 'RW'
       }
-      this.$toast.loading('请求中...', -1)
+      // this.$toast.loading('请求中...', -1)
       $.post(`/h5-api/writeoff/vouchers/settlement/queryOssToken`, config)
         .then(res => {
           this.initOSS(res.result)
@@ -79,8 +79,8 @@ export default {
           })
           .catch(err => {
             reject(err)
-            this.$toast.hide()
-            this.$toast.text('上传失败！')
+            // this.$toast.hide()
+            // this.$toast.text('上传失败！')
           })
       })
     },
@@ -131,7 +131,7 @@ export default {
         productCategory,
         sort
       }
-      this.$toast.loading('请求中...', -1)
+      // this.$toast.loading('请求中...', -1)
       $.post('/h5-api/writeoff/vouchers/settlement/writeOffAndSaveResource', config)
         .then(res => {
           console.log(res.result)

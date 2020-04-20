@@ -1,8 +1,6 @@
 import $ from '@/utils'
 // import config from '@/config'
 import UploadCard from './card'
-// import SqPopup from '@/components/popup'
-// import SqPicker from '@/components/picker'
 import uploadMixin from '@/mixins/upload'
 
 export default {
@@ -106,7 +104,7 @@ export default {
     validateUploadImage (imageList = []) {
       let imgUrlList = imageList.filter(item => (item.imgUrl || item.imageUrl))
       if (imgUrlList.length <= 0) {
-        return this.$toast.text(`维修工单，交通发票为必传图片，请您前去上传`)
+        // return this.$toast.text(`维修工单，交通发票为必传图片，请您前去上传`)
       }
       let required = this.defaultImageGroup()
       let count = 0
@@ -114,8 +112,8 @@ export default {
         if (!(imageList[index].imageGroup === item.imageGroup &&
           imageList[index].imageType === item.imageType &&
           (imageList[index].imgUrl || imageList[index].imageUrl))) {
-          return this.$toast.text(`${imageList[index].imageTypeMsg}
-          为必传图片，请您前去上传`)
+          // return this.$toast.text(`${imageList[index].imageTypeMsg}
+          // 为必传图片，请您前去上传`)
         } else {
           count++
         }
@@ -150,7 +148,5 @@ export default {
 
   components: {
     UploadCard
-    // SqPopup,
-    // SqPicker
   }
 }

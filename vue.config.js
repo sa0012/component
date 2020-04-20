@@ -11,14 +11,24 @@ module.exports = {
   assetsDir: 'static',
   runtimeCompiler: true,
   productionSourceMap: false,
-  // 引入全局scss变量
-  //  css: {
-  //   loaderOptions: {
-  //     sass: {
-  //       data: `@import "@/assets/style/variables.scss";`
-  //     }
-  //   }
-  // },
+  configureWebpack: {
+    performance: {
+      hints: process.env.NODE_ENV === 'production' ? 'error' : false,
+      maxEntrypointSize: 512000, // 500kb * 1024 = 512000字节
+      maxAssetSize: 512000, // 500kb * 1024 = 512000字节
+      assetFilter: function (assetFilename) {
+        return assetFilename.endsWith('.js')
+      }
+    }
+  },
+  // scss变量引入，实现自定义样式主题
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: `@import "~@/assets/style/variables.scss";`
+      }
+    }
+  },
   chainWebpack: config => {
     // version
     config
