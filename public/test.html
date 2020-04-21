@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>离屏canvas实例</title>
+    <style>
+      .main-wrapper {
+        width: 800px;
+        margin: 10px auto;
+      }
+    </style>
+  </head>
+
+  <body onload="init()">
+    <div class="main-wrapper">
+      <canvas
+        width="800"
+        height="600"
+        style="border: 1px solid #ccc"
+        id="canvas"
+      >
+        你的浏览器不支持canvas
+      </canvas>
+      <br /><br /><br /><br /><br /><br /><br /><br /><br />
+      <div id="result"></div>
+      <br />
+      渲染次数:<input type="number" id="times" value="1000" />,共耗时(ms)<span
+        id="time_used"
+        >0</span
+      ><br />
+      <button onclick="doTest(false,false)">不使用离屏canvas</button>
+      <button onclick="doTest(true,false)">使用离屏canvas</button>
+      <button onclick="doTest(true,true)">
+        使用离屏canvas并设置正确的高度
+      </button>
+    </div>
+    <script>
+      /**
+       * 离屏缓存，num为缓存canvas的数量
+       */
+      var OffScreenCache = function(num) {
+        this.canvases = [];
+        for (i = 0; i < num; i++) {
+          this.canvases.push(document.createElement("canvas"));
+        }
+      };
+      OffScreenCache.prototype = {
+        pop: function() {
+          return this.canvases.pop();
+        },
+        push: function(canvas) {
+          this.canvases.push(canvas);
+        },
+        destroy: function() {
+          this.canvases = null;
+        }
+      };
+      var Ball = function(color) {
+        this.radius = 50;
+        this.lineWidth = 4;
+        this.cache = null;
+        this.color = color;
+      };
+      Ball.prototype = {
+        paint: function(ctx, x, y) {
+          ctx.save();
+          ctx.lineWidth = this.lineWidth;
+          ctx.strokeStyle = this.color;
+          for (i = 1; i < this.radius; i += this.lineWidth) {
+            ctx.beginPath();
+            ctx.arc(x, y, i, 0, Math.PI * 2, true); // 绘制
+            ctx.stroke();
+          }
+          ctx.restore();
+        },
+        useCache: function(cacheCanvas, autoSet) {
+          if (autoSet) {
+            cacheCanvas.width = this.radius * 2;
+            cacheCanvas.height = this.radius * 2;
+          }
+          cacheCtx = cacheCanvas.getContext("2d");
+          this.paint(cacheCtx, cacheCanvas.width / 2, cacheCanvas.height / 2);
+          this.cache = cacheCanvas;
+        }
+      };
+      /******************** 下面是执行代码 **************************/
+      var g_canvas, g_ctx;
+      var g_width = 800;
+      var g_height = 600;
+      function init() {
+        g_canvas = document.getElementById("canvas");
+        g_ctx = g_canvas.getContext("2d");
+      }
+      function getRandomPos() {
+        var x = Math.random() * g_width;
+        var y = Math.random() * g_height;
+        return { x: x, y: y };
+      }
+      function showResult(ballCount) {
+        var dom = document.getElementById("result");
+        dom.innerHTML = "";
+        var str = "";
+        for (var key of Object.keys(ballCount)) {
+          str += "<span>" + key + "ball：" + ballCount[key] + "</span>    ";
+        }
+        dom.innerHTML = str;
+      }
+      function doTest(useCache, autoSet) {
+        g_ctx.clearRect(0, 0, g_width, g_height);
+        var startTime = Date.now();
+        var times = document.getElementById("times").value;
+        var colorArray = ["red", "blue", "green", "black", "pink"]; // 共绘制5种颜色
+        var ballCount = {};
+        colorArray.forEach(function(color) {
+          ballCount[color] = 0;
+        });
+        if (useCache) {
+          var colorBall = [];
+          var cacheCanvases = new OffScreenCache(colorArray.length);
+          for (var i = 0; i < colorArray.length; i++) {
+            var ball = new Ball(colorArray[i]);
+            var cacheCanvas = cacheCanvases.pop();
+            ball.useCache(cacheCanvas, autoSet);
+            colorBall.push(ball);
+          }
+          for (var i = 0; i < times; i++) {
+            ball = colorBall[i % 5];
+            ballCount[ball.color]++;
+            var pos = getRandomPos();
+            g_ctx.drawImage(ball.cache, pos.x, pos.y); // 开始画
+          }
+        } else {
+          for (var i = 0; i < times; i++) {
+            var color = colorArray[i % 5];
+            var ball = new Ball(color);
+            var pos = getRandomPos();
+            ball.paint(g_ctx, pos.x, pos.y); // 开始画
+            ballCount[color]++;
+          }
+        }
+        var endTime = Date.now();
+        document.getElementById("time_used").innerText = endTime - startTime;
+        showResult(ballCount);
+      }
+    </script>
+  </body>
+</html>

@@ -1,5 +1,6 @@
 import '@/requestAnimationFrame'
 let count = 0
+
 export default {
   name: 'turntable',
   props: {
@@ -60,32 +61,16 @@ export default {
   },
 
   methods: {
-    selfInterval (callback = () => {}) {
-      let count = 0
-      callback && callback()
-      let loop = () => {
-        this.timer = window.requestAnimationFrame(() => {
-          if (count < 60) {
-            count++
-          } else {
-            callback && callback()
-            window.cancelAnimationFrame(this.timer)
-            count = 0
-          }
-
-          loop()
-        })
-      }
-
-      loop()
-    },
     loop (res) {
       let {
         ctx,
-        r
+        r,
+        width,
+        height
       } = res
       if (count >= 60) {
         count = 0
+        ctx.clearRect(0, 0, width, height)
         this.light(ctx, r)
       } else {
         count++
@@ -98,6 +83,8 @@ export default {
     init () {
       this.drawLottery()
       this.drawOuterCircle()
+
+      this.drawDotContainer()
         .then(res => {
           this.loop(res)
         })
@@ -134,6 +121,34 @@ export default {
         ctx.arc(0, 0, r - ctx.lineWidth / 2, 0, 2 * Math.PI, false)
         // 填充扇形
         ctx.stroke()
+
+        // 绘制跑马灯
+        // this.light(ctx, r)
+        // 恢复前一个状态
+        resolve({
+          ctx,
+          r,
+          width,
+          height
+        })
+      })
+    },
+
+    drawDotContainer () {
+      // eslint-disable-next-line no-unused-vars
+      return new Promise((resolve, reject) => {
+        let outer = document.querySelector('#lottery-dot')
+        let ctx = outer.getContext('2d')
+        ctx.imageSmoothingEnabled = true
+        let width = ctx.canvas.width
+        let height = ctx.canvas.height
+        let r = width / 2 // 圆的半径为宽度的一半
+
+        // 保存当前绘制状态
+        ctx.save()
+        ctx.beginPath()
+        // 移动到圆心位置
+        ctx.translate(width / 2, height / 2)
 
         // 绘制跑马灯
         this.light(ctx, r)

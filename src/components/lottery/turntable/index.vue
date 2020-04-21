@@ -2,6 +2,7 @@
   <div class="lottery">
     <div class="lottery-outer-container">
       <canvas id="lottery-outer" :width="320 * px2Rem" :height="320 * px2Rem"></canvas>
+      <canvas id="lottery-dot" :width="320 * px2Rem" :height="320 * px2Rem"></canvas>
       <div class="lottery-container" ref="roulette">
         <canvas class="lottery-canvas" id="lottery" :width="300 * px2Rem" :height="300 * px2Rem"></canvas>
 
@@ -238,6 +239,13 @@ export default Controller
       border-bottom: px2Rem(40px) solid #666;
     }
   }
+}
+
+#lottery-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 @media screen and (max-width: 320px) {
