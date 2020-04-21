@@ -1,4 +1,5 @@
 import '@/requestAnimationFrame'
+let count = 0
 export default {
   name: 'turntable',
   props: {
@@ -78,13 +79,28 @@ export default {
 
       loop()
     },
+    loop (res) {
+      let {
+        ctx,
+        r
+      } = res
+      if (count >= 60) {
+        count = 0
+        this.light(ctx, r)
+      } else {
+        count++
+      }
+
+      window.requestAnimationFrame(() => {
+        this.loop(res)
+      })
+    },
     init () {
       this.drawLottery()
-      this.drawOuterCircle().then(res => {
-        this.selfInterval(() => {
-          this.light(res.ctx, res.r)
+      this.drawOuterCircle()
+        .then(res => {
+          this.loop(res)
         })
-      })
     },
     /**
      * @name 绘制外圆
@@ -124,7 +140,9 @@ export default {
         // 恢复前一个状态
         resolve({
           ctx,
-          r
+          r,
+          width,
+          height
         })
       })
     },
@@ -202,15 +220,15 @@ export default {
           } else {
             ctx.fillStyle = '#FBD700'
           }
-          ctx.arc(x, y, 5 * this.px2Rem, 0, 2 * Math.PI, false)
+          // ctx.arc(x, y, 5 * this.px2Rem, 0, 2 * Math.PI, false)
         } else {
           if (this.start === 0) {
             ctx.fillStyle = '#FBD700'
           } else {
             ctx.fillStyle = '#fff'
           }
-          ctx.arc(x, y, 5 * this.px2Rem, 0, 2 * Math.PI, false)
         }
+        ctx.arc(x, y, 5 * this.px2Rem, 0, 2 * Math.PI, false)
         ctx.fill()
       }
     },
