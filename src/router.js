@@ -47,6 +47,17 @@ export default new Router({
         /* webpackChunkName: "uploader" */
         '@/views/uploader/index.vue'
       )
+    },
+    {
+      path: '/countdown',
+      name: 'countdown',
+      meta: {
+        title: '图片上传组件'
+      },
+      component: () => import(
+        /* webpackChunkName: "countdown" */
+        '@/views/countdown/index.vue'
+      )
     }
   ]
 })
