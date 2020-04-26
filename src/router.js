@@ -52,11 +52,22 @@ export default new Router({
       path: '/countdown',
       name: 'countdown',
       meta: {
-        title: '图片上传组件'
+        title: '倒计时'
       },
       component: () => import(
         /* webpackChunkName: "countdown" */
         '@/views/countdown/index.vue'
+      )
+    },
+    {
+      path: '/spike',
+      name: 'spike',
+      meta: {
+        title: '秒杀活动'
+      },
+      component: () => import(
+        /* webpackChunkName: "spike" */
+        '@/views/spike/index.vue'
       )
     }
   ]

@@ -1,0 +1,69 @@
+{
+  "result": {
+    "rgb": "#fefefe",
+    "activitySessionList": [
+      {
+        "startTime": "00:00:00",
+        "endTime": "00:02:00",
+        "sessionCode": "ACS2000000348",
+        "sessionName": "！",
+        "status": "S_101",
+        "sessionProductList": [
+          {
+            "productName": "六七秒杀活动3",
+            "fullProductLogoUrl": "http://t9.baidu.com/it/u=583874135,70653437&fm=79&app=86&f=JPEG?w=3607&h=2408",
+            "marketPrice": 9999,
+            "seckillPrice": 0.01,
+            "remainingInventory": 9999,
+            "needPurchaseLimit": "N",
+            "deliveryMethod": "PICK_UP_STORE",
+            "status": "S_101"
+          }
+        ]
+      },
+      {
+        "startTime": "00:03:00",
+        "endTime": "00:05:00",
+        "sessionCode": "ACS2000000348",
+        "sessionName": "！",
+        "status": "S_101",
+        "sessionProductList": [
+          {
+            "productName": "六七秒杀活动3",
+            "fullProductLogoUrl": "http://t9.baidu.com/it/u=583874135,70653437&fm=79&app=86&f=JPEG?w=3607&h=2408",
+            "marketPrice": 9999,
+            "seckillPrice": 0.01,
+            "remainingInventory": 9999,
+            "needPurchaseLimit": "N",
+            "deliveryMethod": "PICK_UP_STORE",
+            "status": "S_101"
+          }
+        ]
+      },
+      {
+        "startTime": "00:06:00",
+        "endTime": "00:08:00",
+        "sessionCode": "ACS2000000348",
+        "sessionName": "！",
+        "status": "S_101",
+        "sessionProductList": [
+          {
+            "productName": "六七秒杀活动3",
+            "fullProductLogoUrl": "http://t9.baidu.com/it/u=583874135,70653437&fm=79&app=86&f=JPEG?w=3607&h=2408",
+            "marketPrice": 9999,
+            "seckillPrice": 0.01,
+            "remainingInventory": 9999,
+            "needPurchaseLimit": "N",
+            "deliveryMethod": "PICK_UP_STORE",
+            "status": "S_101"
+          }
+        ]
+      }
+    ],
+    "activityUrl": null,
+    "currentTimeMillis": 1584007646870
+  },
+  "errorMessges": null,
+  "warningMessage": null,
+  "status": "100"
+}

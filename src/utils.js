@@ -138,6 +138,72 @@ export const getDateStr = () => {
   return `${date.getFullYear()}${date.getMonth() + 1}${date.getDate()}`
 }
 
-window.utils = utils
+export const RAF = {
+  intervalTimer: null,
+  timeoutTimer: null,
+  setTimeout (cb, interval) { // 实现setTimeout功能
+    let now = Date.now
+    let stime = now()
+    let etime = stime
+    let loop = () => {
+      this.timeoutTimer = window.requestAnimationFrame(loop)
+      etime = now()
+      if (etime - stime >= interval) {
+        cb()
+        window.cancelAnimationFrame(this.timeoutTimer)
+      }
+    }
+    this.timeoutTimer = window.requestAnimationFrame(loop)
+    return this.timeoutTimer
+  },
+  clearTimeout () {
+    window.cancelAnimationFrame(this.timeoutTimer)
+  },
+  setInterval (cb, interval) { // 实现setInterval功能
+    let now = Date.now
+    let stime = now()
+    let etime = stime
+    let loop = () => {
+      this.intervalTimer = window.requestAnimationFrame(loop)
+      etime = now()
+      if (etime - stime >= interval) {
+        stime = now()
+        etime = stime
+        cb()
+      }
+    }
+    this.intervalTimer = window.requestAnimationFrame(loop)
+    return this.intervalTimer
+  },
+  clearInterval () {
+    window.cancelAnimationFrame(this.intervalTimer)
+  }
+}
+
+export const dateformat = (date, format) => {
+  if (!date) return
+
+  var o = {
+    'M+': date.getMonth() + 1,
+    'd+': date.getDate(),
+    'H+': date.getHours(),
+    'm+': date.getMinutes(),
+    's+': date.getSeconds(),
+    'q+': Math.floor((date.getMonth() + 3) / 3),
+    'S': date.getMilliseconds()
+  }
+
+  if (/(y+)/.test(format)) {
+    format = format.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
+  }
+
+  for (var k in o) {
+    if (new RegExp('(' + k + ')').test(format)) {
+      format = format.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (('00' + o[k]).substr(('' + o[k]).length))) // eslint-disable-line
+    }
+  }
+
+  return format
+}
 
 export default utils

@@ -1,12 +1,14 @@
 <template>
   <div class="countdown">
     <count-down :timestamp="timestamp" />
+    <timer-count :timestamp="timestamp" />
     <button @click="startTime">点击倒计时开始</button>
   </div>
 </template>
 
 <script>
 import CountDown from '@/components/countdown'
+import TimerCount from '@/components/countdown/timer'
 export default {
   name: 'countdown',
   data () {
@@ -22,7 +24,8 @@ export default {
   },
 
   components: {
-    CountDown
+    CountDown,
+    TimerCount
   }
 }
 </script>
