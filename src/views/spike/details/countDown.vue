@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import '@/requestAnimationFrame'
+import { RAF } from '@/utils'
 import Worker from '@/components/countdown/timer.worker.js'
 export default {
   name: 'timeStamps',
@@ -44,8 +46,13 @@ export default {
         secondsLeft: 0,
         secondsRight: 0
       },
+      timer: null,
+      firstCount: true,
       // 当前时间戳
-      remainTimestamp: 0
+      remainTimestamp: 0,
+      // 本次开始时间戳， 作为下一次执行参考
+      then: 0,
+      worker: null
     }
   },
   methods: {
@@ -66,19 +73,31 @@ export default {
         total--
         if (total < 0) {
           this.$emit('currentIndex', this.currentSelect)
+          RAF.clearInterval(this.timer)
         }
       }
     },
     // 缓存每次执行的时间
-    setTimer (val) {
+    cacheTimestamp (tms = Date.now()) {
+      if (this.remainTimestamp > 0 && this.then) {
+        // 减去当前与上一次执行的间隔
+        this.remainTimestamp -= (tms - this.then)
+        // 记录本次执行的时间
+        this.then = tms
+        this.countDown(this.remainTimestamp)
+      } else {
+        RAF.clearInterval(this.timer)
+      }
+    },
+
+    // worker
+    createWorker (tms) {
       this.worker = new Worker()
       this.worker.postMessage({
-        value: val
+        value: tms
       })
       const that = this
-      this.worker.onmessage = function(e) {
-        that.remainTimestamp = e.data.value
-        that.countTime = Math.floor(e.data.value / 1000)
+      this.worker.onmessage = function (e) {
         that.countDown(e.data.value)
       }
     }
@@ -86,16 +105,24 @@ export default {
   watch: {
     timestamp: {
       handler (newVal) {
-        this.remainTimestamp = newVal
-        // this.countDown(newVal)
-        this.setTimer(newVal)
+        this.countDown(newVal)
+        if (typeof Worker !== 'undefined') {
+          // 销毁就得线程
+          this.worker = null
+          this.createWorker(newVal)
+        } else {
+          this.remainTimestamp = newVal
+          this.then = Date.now()
+          this.timer = RAF.setInterval(this.cacheTimestamp, 1000)
+        }
       },
       immediate: true
     }
   },
 
-  destored () {
+  beforeDestroy () {
     this.worker = null
+    RAF.clearInterval(this.timer)
   }
 }
 </script>

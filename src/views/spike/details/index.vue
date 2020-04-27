@@ -17,7 +17,7 @@
       </div>
       <div class="detail-status-timer">
         <div class="timer-title">距离结束还剩</div>
-        <count-down :countTime.sync="countTime" />
+        <count-down :timestamp="countTime" />
       </div>
     </section>
     <section class="detail-name-wrap">
@@ -26,8 +26,8 @@
     </section>
     <section class="buy-wrap">
       <div class="buy-title">购买数量</div>
-      <span class="count-num">{{ number }}</span>
-      <!-- <div class="buy-count">
+      <!-- <span class="count-num">{{ number }}</span> -->
+      <div class="buy-count">
         <span
           class="count-reduce count-inline"
           :class="{
@@ -41,7 +41,7 @@
             'isDisabled': number === maxNum
           }"
           @click="handleAdd">+</span>
-      </div> -->
+      </div>
     </section>
     <section class="store-wrap">
       <div class="store-name">门店信息</div>

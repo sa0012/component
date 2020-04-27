@@ -1,9 +1,8 @@
 
-import $ from '@/utils'
-import { loginError, calcTimeStamp, deliveryStatus } from '../config'
-import { sessionGet } from '@/storage'
+import $, { dateformat  } from '@/utils'
+import { calcTimeStamp, deliveryStatus } from '../config'
 import CountDown from './countDown'
-// import MockData from '../data/spikeDetail.json'
+import MockData from '../data/spikeDetail.json'
 export default {
   name: 'spikeDetail',
   data () {
@@ -27,15 +26,14 @@ export default {
 
   computed: {
     prodList () {
-      return this.$store.state.spike.details || {}
-      // let data = MockData.result
-      // data.currentTimeMillis = +new Date()
-      // return data
+      let data = MockData.result
+      data.currentTimeMillis = +new Date()
+      return data
     },
     currentTimeStamp () {
       let timeStamp = this.prodList.currentTimeMillis
       if (!timeStamp) return null
-      return $.dateformat(new Date(timeStamp), 'yyyy/MM/dd')
+      return dateformat(new Date(timeStamp), 'yyyy/MM/dd')
     },
     prodDetails () {
       let list = this.prodList.activitySessionList || []
@@ -73,30 +71,6 @@ export default {
         this.total = (this.price * this.number).toFixed(2)
       }
     },
-    queryActivityDetails () {
-      this.$toast.loading('请求中...', -1)
-      $.post(`/h5-api/activity/seckill/queryActivityDetail/${this.activityCode}`)
-        .then(res => {
-          if (res.status === '100') {
-            console.log(res, 'res')
-            let result = res.result || {}
-            if (result.status !== 'ONGOING') {
-              this.$router.push({
-                path: '/spike/status',
-                query: {
-                  type: result.status
-                }
-              })
-            }
-            this.$store.dispatch('update_details', result)
-          } else {
-            console.log(res.status, 'status')
-          }
-        })
-        .catch(e => {
-          loginError(e, this.$router)
-        })
-    },
 
     validateSubmit (config) {
       if (!config.activityCode) {
@@ -113,51 +87,7 @@ export default {
     },
 
     submit () {
-      const config = {
-        // 活动代码
-        activityCode: this.activityCode,
-        // 场次代码
-        sessionCode: this.sessionCode,
-        // 商品代码
-        productNo: this.productNo,
-        openid: sessionGet('openId')
-      }
-
-      if (!this.validateSubmit(config)) return
-      this.$toast.loading('请求中...', -1)
-      this.isDisabled = true
-      $.post('/h5-api/activity/seckill/createOrder', config)
-        .then(res => {
-          if (res.status === '100') {
-            this.$spikeDialog.alert({
-              iconType: 'success',
-              title: '恭喜您',
-              message: '秒杀下单成功',
-              confirmFn: () => {
-                this.isDisabled = false
-                this.$router.push({
-                  path: '/spike/home'
-                })
-                // 手动隐藏
-                this.$spikeDialog.hide()
-              }
-            })
-          }
-        })
-        .catch(e => {
-          this.isDisabled = false
-          let errorMessges = e.errorMessges || []
-          // 本次活动该商品已秒杀完毕
-          if (errorMessges.length > 0 && errorMessges[0].includes('本次活动该商品已秒杀完毕')) {
-            return this.$router.push({
-              path: '/spike/status',
-              query: {
-                type: 'END'
-              }
-            })
-          }
-          loginError(e, this.$router)
-        })
+      console.log('提交订单')
     }
   },
 
@@ -172,10 +102,6 @@ export default {
     next(vm => {
       vm.isDisabled = false
     })
-  },
-
-  mounted () {
-    this.queryActivityDetails()
   },
 
   destory () {

@@ -69,6 +69,17 @@ export default new Router({
         /* webpackChunkName: "spike" */
         '@/views/spike/index.vue'
       )
+    },
+    {
+      path: '/spike/detail',
+      name: 'spikeDetail',
+      meta: {
+        title: '秒杀活动'
+      },
+      component: () => import(
+        /* webpackChunkName: "spikeDetail" */
+        '@/views/spike/details/index.vue'
+      )
     }
   ]
 })

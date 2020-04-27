@@ -1,7 +1,7 @@
 self.onmessage = function(e) {
   let time = e.data.value
   const timer = setInterval(() => {
-    time -= 60
+    time -= 1000
     if(time > 0) {
       self.postMessage({
         value: time
@@ -13,5 +13,5 @@ self.onmessage = function(e) {
       })
       self.close()
     }
-  }, 60)
+  }, 1000)
 }

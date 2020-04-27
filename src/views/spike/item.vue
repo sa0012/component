@@ -101,6 +101,7 @@ export default {
     margin-bottom: 10px;
     display: flex;
     align-items: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   }
 
   &-banner {
@@ -108,7 +109,8 @@ export default {
   }
 
   &-banner-icon {
-    width: 90px;
+    max-width: 90px;
+    max-height: 90px;
   }
 
   &-content {
@@ -123,7 +125,6 @@ export default {
 
   &-top,
   &-bottom {
-    text-align: left;
     display: flex;
   }
 

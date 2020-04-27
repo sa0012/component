@@ -2,25 +2,28 @@
   <div
     class="spike"
     :style="{
-      'background-color': details.rgb
+      'background-color': details.rgb,
+      'background-image': `url(${details.fullBannerUrl})`
     }">
     <section class="spike-wrap">
       <section class="spike-banner-wrap">
         <div class="spike-banner-btn-wrap">
           <div
+            v-if="details.activityDesc"
             class="banner-btn rules-btn"
           >
             <div>活动</div>
             <div>规则</div>
           </div>
           <div
+            v-if="details.activityPhone"
             class="banner-btn"
           >
             <div>联系</div>
             <div>商家</div>
           </div>
         </div>
-        <img src="http://img1.gtimg.com/autoshijiazhuang/pics/hv1/156/10/111/7220481.png" alt="" class="spike-banner">
+        <img :src="details.bannerUrl || bannerUrl" alt="" class="spike-banner">
       </section>
       <section class="spike-timer-status" v-if="activitySessionList.length > 0">
         <div class="timer-date">
@@ -76,9 +79,9 @@
             v-show="sIndex === currentSelect"
             class="spike-line-wrap">
             <div class="spike-line-desc-wrap">
-              {{ toastEnum[session.status] }}
+              {{ toastEnum[currentSession.status] }}
               <count-down
-                v-show="session.status !== 'S_103'"
+                v-show="currentSession.status !== 'S_103'"
                 class="spike-count-down"
                 :currentSelect="sIndex"
                 @currentIndex="currentIndexHandler"
@@ -142,8 +145,7 @@ $theme_color: #5373C6;
 
   &-line-wrap {
     text-align: center;
-    padding: 0 10px;
-    padding-top: 10px;
+    padding: 10px;
     color: #ccc;
     display: flex;
     align-items: center;
@@ -155,6 +157,7 @@ $theme_color: #5373C6;
 
     /deep/ .position {
       padding: 0 2px;
+      background-color: rgba(0, 0, 0, 0.7);
     }
 
     /deep/ .countDiv {
@@ -176,6 +179,7 @@ $theme_color: #5373C6;
       flex: 1;
       height: 1px;
       background: #ccc;
+      transform: scaleY(0.5);
     }
 
     &::before {
