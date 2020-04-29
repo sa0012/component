@@ -122,7 +122,7 @@ export default {
           }
 
           // 记录第一个即将开始场次位置
-          if (item.status === 'S_101' && !firstWillStartIndex) {
+          if (item.status === 'S_101' && !firstWillStartIndex && firstWillStartIndex !== 0) {
             firstWillStartIndex = index
           }
 
@@ -154,7 +154,7 @@ export default {
         // 查询是否有即将开始的场次，并切换到第一个即将开始场次分组
         // 如果没有即将开始的场次，说明所有的活动都已经结束，直接切换到最后一个场次分组即可
         if (!isExistStartSession) {
-          if (firstWillStartIndex) {
+          if (firstWillStartIndex || firstWillStartIndex === 0) {
             this.changeTab(firstWillStartIndex)
           } else {
             this.changeTab(activitySessionList.length - 1)

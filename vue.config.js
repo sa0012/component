@@ -14,8 +14,8 @@ module.exports = {
   configureWebpack: {
     performance: {
       hints: process.env.NODE_ENV === 'production' ? 'error' : false,
-      maxEntrypointSize: 512000, // 500kb * 1024 = 512000字节
-      maxAssetSize: 512000, // 500kb * 1024 = 512000字节
+      maxEntrypointSize: 612000, // 500kb * 1024 = 612000字节
+      maxAssetSize: 612000, // 500kb * 1024 = 512000字节
       assetFilter: function (assetFilename) {
         return assetFilename.endsWith('.js')
       }
@@ -34,26 +34,26 @@ module.exports = {
     config
       .plugin('html-app')
       .tap(args => {
-        // 添加 build 时间 -- version
-        args[0].version = getVersion()
         // 添加 CDN 参数到 htmlWebpackPlugin 配置中，见 src/index.html 修改
         if (process.env.NODE_ENV === 'production') {
-          args[0].cdn = cdnConfig().build
+          // 添加 build 时间 -- version
+          args[0].version = getVersion()
+          // args[0].cdn = cdnConfig().build
         } else if (process.env.NODE_ENV === 'development') {
-          args[0].cdn = cdnConfig().dev
+          // args[0].cdn = cdnConfig().dev
         }
         return args
       })
     // 提取公共资源，并使用cdn加载
-    config
-      .when(process.env.NODE_ENV === 'production',
-        config => {
-          // 提取公共资源，并使用cdn加载
-          config.externals({
-            'ali-oss': 'OSS'
-          })
-        }
-      )
+    // config
+    //   .when(process.env.NODE_ENV === 'production',
+    //     config => {
+    //       // 提取公共资源，并使用cdn加载
+    //       config.externals({
+    //         // 'ali-oss': 'OSS'
+    //       })
+    //     }
+    //   )
 
     // 配置worjer-loader
     config.module
@@ -86,12 +86,14 @@ function getVersion() {
   return date.toJSON().substr(0,19).replace(/[-T:]/g,'')
 }
 
-const cdnConfig = () => {
+function cdnConfig () {
   return {
     dev: {
+      css: [],
       js: []
     },
     build: {
+      css: [],
       js: [
         'http://gosspublic.alicdn.com/aliyun-oss-sdk-6.7.0.min.js'
       ]
