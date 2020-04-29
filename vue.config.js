@@ -36,8 +36,24 @@ module.exports = {
       .tap(args => {
         // 添加 build 时间 -- version
         args[0].version = getVersion()
+        // 添加 CDN 参数到 htmlWebpackPlugin 配置中，见 src/index.html 修改
+        if (process.env.NODE_ENV === 'production') {
+          args[0].cdn = cdnConfig().build
+        } else if (process.env.NODE_ENV === 'development') {
+          args[0].cdn = cdnConfig().dev
+        }
         return args
       })
+    // 提取公共资源，并使用cdn加载
+    config
+      .when(process.env.NODE_ENV === 'production',
+        config => {
+          // 提取公共资源，并使用cdn加载
+          config.externals({
+            'ali-oss': 'OSS'
+          })
+        }
+      )
 
     // 配置worjer-loader
     config.module
@@ -68,4 +84,17 @@ function getVersion() {
   let date = new Date()
   date.setMinutes(date.getMinutes() - date.getTimezoneOffset()) // toJSON 的时区补偿
   return date.toJSON().substr(0,19).replace(/[-T:]/g,'')
+}
+
+const cdnConfig = () => {
+  return {
+    dev: {
+      js: []
+    },
+    build: {
+      js: [
+        'http://gosspublic.alicdn.com/aliyun-oss-sdk-6.7.0.min.js'
+      ]
+    }
+  }
 }
