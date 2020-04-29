@@ -74,6 +74,10 @@ export default {
       default: () => {
         return []
       }
+    },
+    maxUpload: {
+      type: Number || String,
+      default: 9
     }
   },
 
@@ -133,7 +137,6 @@ export default {
 
     changeFileStatus (e) {
       let fileDom = e.target
-      console.log(e, 'e')
       this.uploaderDom = fileDom
       if (fileDom.value) {
         fileDom.value = ''
@@ -157,36 +160,46 @@ export default {
         return
       }
 
+      files = Array.prototype.slice.call(files)
+
+      files = files.length > this.maxUpload ?
+        files.splice(0, this.maxUpload) :
+        files
+
       console.log(files, 'files')
 
       const urlObj = window.URL || window.webkitURL || window.mozURL
-      let img = files[0]
-      let url = urlObj.createObjectURL(img)
-      let mimeType = files[0].type || 'image/jpeg'
-      let imgType = 'jpeg'
-      if (mimeType) {
-        imgType = mimeType.split('/')[1]
-      }
-      let fileName = `${+new Date()}.${imgType}`
-      console.log(fileName, 'Date')
-      if (url) {
-        let urlStrArr = url.split(':')
-        let targetUrlArr = urlStrArr[urlStrArr.length - 1].split('/')
-        let urlStr = targetUrlArr[targetUrlArr.length - 1]
-        this.$emit('returnUrl', url)
-        fileName = `${urlStr}.${imgType}`
-      }
-      console.log(fileName, 'fileName')
-      this.blobToDataURL(img, (base64Url) => {
-        this.compressImage(base64Url, mimeType)
-          .then(lastData => {
-            this.$emit('returnBase64', {
-              filePath: fileName,
-              file: lastData,
-              upload: this.uploadObj
-            })
+      // let img = files[0]
+      for (let i = 0; i < files.length; i++) {
+        let url = urlObj.createObjectURL(files[i])
+        let mimeType = files[0].type || 'image/jpeg'
+        let imgType = 'jpeg'
+        if (mimeType) {
+          imgType = mimeType.split('/')[1]
+        }
+        let fileName = `${+new Date()}.${imgType}`
+        if (url) {
+          let urlStrArr = url.split(':')
+          let targetUrlArr = urlStrArr[urlStrArr.length - 1].split('/')
+          let urlStr = targetUrlArr[targetUrlArr.length - 1]
+          this.$emit('returnUrl', {
+            url,
+            index: i
           })
-      })
+          fileName = `${urlStr}.${imgType}`
+        }
+        this.blobToDataURL(files[i], (base64Url) => {
+          this.compressImage(base64Url, mimeType)
+            .then(lastData => {
+              this.$emit('returnBase64', {
+                filePath: fileName,
+                file: lastData,
+                upload: this.uploadObj,
+                index: i
+              })
+            })
+        })
+      }
     },
 
     /**

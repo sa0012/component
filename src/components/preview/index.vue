@@ -56,7 +56,6 @@ export default {
   name: 'previewer',
   computed: {
     imgs () {
-      console.log(this.list, 'list----------')
       return this.list.map(one => {
         if (!one.msrc) {
           one.msrc = one.src

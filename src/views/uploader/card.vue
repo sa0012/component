@@ -29,6 +29,10 @@
           <sq-uploader
             @click="handleClick(index)"
             :uploadObj="upload"
+            :multiple="
+              !requiredImageEnum.includes(upload.imageType)
+              && !(upload.imgUrl || upload.imageUrl)
+              ? true : false"
             :previewImageList="previewImageList"
             @returnBase64="getFiles"
             @returnUrl="handleReturnUrl"
@@ -56,6 +60,7 @@
 <script>
 import SqUploader from '@/components/uploader'
 import UploadLoading from './loading'
+// eslint-disable-next-line no-unused-vars
 import { dataURLtoBlob, px2Rem } from '@/utils'
 import { requiredImageEnum } from '@/config'
 
@@ -133,7 +138,7 @@ export default {
       handler (newVal) {
         this.uploadList = newVal
         this.previewImageList = this.filterPreviewImage(newVal)
-        console.log(this.previewImageList, 'previewImageList')
+        // console.log(this.previewImageList, 'previewImageList')
       },
       deep: true,
       immediate: true
@@ -149,20 +154,30 @@ export default {
 
   methods: {
     handleClick (index) {
-      console.log(index, 'index--')
+      // console.log(index, 'index--')
       this.currentIndex = index
     },
 
-    handleReturnUrl (url) {
-      let target = this.uploadList[this.currentIndex]
+    previewImage (index, url) {
+      let target = this.uploadList[index]
       target.imgUrl = url
       target.showLoading = true
       setTimeout(() => {
         target.showLoading = false
-      }, 1500);
+      }, 5000);
     },
 
-    getFiles ({ filePath, file, upload }) {
+    // eslint-disable-next-line no-unused-vars
+    handleReturnUrl ({url, index}) {
+      console.log(url, 'url')
+      if (index) {
+        this.addImg()
+      }
+      this.previewImage(this.currentIndex + index, url)
+    },
+
+    // eslint-disable-next-line no-unused-vars
+    getFiles ({ filePath, file, upload, index }) {
       console.log(filePath, upload)
       // let _blob = dataURLtoBlob(file)
       // let _this = this

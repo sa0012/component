@@ -35,7 +35,7 @@ export default {
 
 <style lang="scss">
 @import '~@/assets/style/reset.scss';
-@import '~@/assets/font/iconfont.scss';
+@import '~@/assets/font/iconfont.css';
 // $theme-color: var(--theme-color);
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
